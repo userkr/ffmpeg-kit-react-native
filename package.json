@@ -1,5 +1,5 @@
 {
-  "name": "@apescoding/ffmpeg-kit-react-native",
+  "name": "ffmpeg-kit-react-native",
   "version": "1.0.1",
   "description": "FFmpeg Kit for React Native",
   "main": "src/index",

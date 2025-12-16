@@ -19,7 +19,7 @@ Pod::Spec.new do |s|
   # s.default_subspec   = 'https'
 
   s.source = {
-    :http => "https://github.com/userkr/ffmpeg-kit/releases/download/v6.0/ffmpeg-kit-https-6.0-ios-xcframework.zip"
+    :http => "https://github.com/userkr/ffmpeg-kit/releases/download/Latest/ffmpeg-kit-https-6.0-ios-xcframework.zip"
   }
 
   s.dependency "React-Core"

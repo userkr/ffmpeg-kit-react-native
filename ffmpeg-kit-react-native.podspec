@@ -24,7 +24,7 @@ Pod::Spec.new do |s|
 
   s.dependency "React-Core"
 
-  s.vendored_frameworks = "ffmpeg-kit-https.xcframework"
+  s.vendored_frameworks = "ffmpegkit.xcframework"
 
   s.source_files = [
     "ios/FFmpegKitReactNativeModule.m",

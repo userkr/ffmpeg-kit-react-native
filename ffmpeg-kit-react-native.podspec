@@ -18,18 +18,49 @@ Pod::Spec.new do |s|
 
   # s.default_subspec   = 'https'
 
+  # 1. Исправьте источник (source). Укажите путь к вашему собственному релизу.
   s.source = {
     :http => "https://github.com/userkr/ffmpeg-kit/releases/download/Latest/ffmpeg-kit-https-6.0-ios-xcframework.zip"
   }
 
   s.dependency "React-Core"
 
-  s.vendored_frameworks = "ffmpegkit.xcframework"
+  # 2. Добавьте ВСЕ фреймворки в vendored_frameworks.
+  s.vendored_frameworks = [
+      "ffmpegkit.xcframework",
+      "libavcodec.xcframework",
+      "libavformat.xcframework",
+      "libavutil.xcframework",
+      "libswscale.xcframework",
+      "libswresample.xcframework",
+      "libavfilter.xcframework"
+  ]
 
   s.source_files = [
     "ios/FFmpegKitReactNativeModule.m",
     "ios/FFmpegKitReactNativeModule.h"
   ]
+
+  # === ИЗМЕНЕНИЕ 3: Добавляем необходимые системные фреймворки и библиотеки ===
+  s.frameworks = [
+    "AudioToolbox",
+    "AVFoundation",
+    "VideoToolbox"
+  ]
+  
+  s.libraries = [
+    "bz2",
+    "iconv",
+    "z"
+  ]
+
+  # === ИЗМЕНЕНИЕ 4: Настройки для корректной работы архитектур ===
+  s.pod_target_xcconfig = {
+    'VALID_ARCHS' => 'arm64 x86_64 arm64-simulator',
+    'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'i386',
+    'OTHER_LDFLAGS' => '-framework ffmpegkit -framework libavcodec -framework libavformat -framework libavutil -framework libswscale -framework libswresample -framework libavfilter -framework libavdevice'
+  }
+  
   # s.subspec 'https' do |ss|
   #     ss.source_files      = '**/FFmpegKitReactNativeModule.m',
   #                            '**/FFmpegKitReactNativeModule.h'
